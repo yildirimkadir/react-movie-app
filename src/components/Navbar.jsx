@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const currentUser = { displayName: "Kadir Yildirim" };
+  // const currentUser = false;
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -20,18 +23,35 @@ const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  Register
-                </Link>
-              </li>
-            </ul>
+            {currentUser ? (
+              <>
+                <ul className="navbar-nav mb-2 mb-lg-0">
+                  <li className="nav-item">
+                    <h6 className="loginName">{currentUser.displayName}</h6>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/" className="nav-link">
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              </>
+            ) : (
+              <>
+                <ul className="navbar-nav mb-2 mb-lg-0">
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/register" className="nav-link">
+                      Register
+                    </Link>
+                  </li>
+                </ul>
+              </>
+            )}
           </div>
         </div>
       </nav>

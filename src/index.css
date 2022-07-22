@@ -17,3 +17,8 @@ code {
 .navbar-nav {
   margin-left: auto;
 }
+.loginName {
+  color: white;
+  /* font-weight: bold; */
+  line-height: 40px;
+}
