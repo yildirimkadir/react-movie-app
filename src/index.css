@@ -14,6 +14,9 @@ code {
  * {
    box-sizing: border-box;
  }
+ .main-container {
+  height: 100vh;
+ }
 .navbar-nav {
   margin-left: auto;
 }
@@ -22,3 +25,15 @@ code {
   /* font-weight: bold; */
   line-height: 40px;
 }
+.registerImg {
+  height: 100%;
+  width: 100%;
+}
+.form-image {
+  min-width: 800px;
+  min-height: 800px;
+}
+.form {
+  width: 500px;
+}
+  

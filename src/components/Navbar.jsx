@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const currentUser = { displayName: "Kadir Yildirim" };
-  // const currentUser = false;
+  // const currentUser = { displayName: "Kadir Yildirim" };
+  const currentUser = false;
 
   return (
     <>

@@ -1,18 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(firstName, lastName);
+  };
+
   return (
-    <div className="d-flex justify-content-center">
+    <div className="main-container d-flex justify-content-center">
       <div className="form-image d-none d-md-block ">
         <img
-          src={"https://picsum.photos/800/800"}
-          className="w-120"
+          src={
+            "https://cdn.pixabay.com/photo/2015/07/19/10/00/school-work-851328_960_720.jpg"
+          }
+          className="registerImg"
           alt="sample-movie"
         />
       </div>
-      <div className="container-fluid mt-5 d-flex flex-column justify-content-center align-items-center">
-        <form className="w-75">
+      <div className="container mt-1 d-flex flex-column justify-content-center align-items-center">
+        <form className="form" onSubmit={handleSubmit}>
+          <h1 className="form-title display-4 mb-4 ">Register</h1>
           <div className="mb-3">
             <label htmlFor="firstName" className="form-label">
               First Name
@@ -23,6 +37,8 @@ const Register = () => {
               id="firstName"
               aria-describedby="emailHelp"
               placeholder="Enter your first name.."
+              required
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
           <div className="mb-3">
@@ -35,6 +51,8 @@ const Register = () => {
               id="lastName"
               aria-describedby="emailHelp"
               placeholder="Enter your last name.."
+              required
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
           <div className="mb-3">
@@ -47,6 +65,8 @@ const Register = () => {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter your email.."
+              required
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-3">
@@ -59,6 +79,7 @@ const Register = () => {
               id="exampleInputPassword1"
               placeholder="Enter your password.."
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="mb-3">
