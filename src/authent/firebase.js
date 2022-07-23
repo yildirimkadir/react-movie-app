@@ -1,5 +1,15 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from 'firebase/auth';
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -19,17 +29,85 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export const createUser = async(email, password) => {
+export const createUser = async(email, password, navigate, displayName) => {
     try {
         let userCredential = await createUserWithEmailAndPassword(
             auth, 
             email, 
             password
         );
-        console.log(userCredential);
+        await updateProfile(auth.currentUser, {
+        displayName: displayName,
+
+     });
+     navigate("/login");
+     console.log(userCredential);
         
     } catch (err) {
-        console.log(err);
+        alert("Dies User wurde schon registered")
         
     }
 }
+
+export const signIn = async (email, password, navigate) => {
+
+  try {
+    let userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    navigate('/');
+    // toastSuccessNotify('Logged in successfully!');
+    console.log(userCredential);
+  } catch (err) {
+    // toastErrorNotify(err.message);
+    console.log(err);
+  }
+};
+
+export const userObserver = (setCurrentUser) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setCurrentUser(user);
+    } else {
+      // User is signed out
+      setCurrentUser(false);
+    }
+  });
+};
+
+export const logOut = () => {
+  signOut(auth);
+};
+
+export const signUpProvider = (navigate) => {
+
+  const provider = new GoogleAuthProvider();
+
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result);
+      navigate('/');
+    //   toastSuccessNotify('Logged out successfully!');
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      console.log(error);
+    });
+};
+
+export const forgotPassword = (email) => {
+  //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+    //   toastWarnNotify('Please check your mail box!');
+      alert("Please check your mail box!");
+    })
+    .catch((err) => {
+    //   toastErrorNotify(err.message);
+      alert(err.message);
+      // ..
+    });
+};
