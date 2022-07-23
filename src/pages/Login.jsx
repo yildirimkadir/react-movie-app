@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+  };
   return (
     <div className="main-container d-flex justify-content-center">
       <div className="form-image d-none d-md-block ">
@@ -14,7 +23,7 @@ const Login = () => {
         />
       </div>
       <div className="container mt-1 d-flex flex-column justify-content-center align-items-center">
-        <form className="form">
+        <form className="form" onSubmit={handleLogin}>
           <h1 className="form-title display-4 mb-4 ">Login</h1>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -27,6 +36,7 @@ const Login = () => {
               aria-describedby="emailHelp"
               placeholder="Enter your email.."
               required
+              onChange={(e) => setEmail(e.target.value)}
             />
             <div id="emailHelp" className="form-text">
               We'll never share your email with anyone else.
@@ -42,6 +52,7 @@ const Login = () => {
               id="exampleInputPassword1"
               placeholder="Enter your password.."
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="mb-3">
@@ -51,8 +62,8 @@ const Login = () => {
             <button type="submit" className="btn btn-primary me-2">
               Login
             </button>
-            <button type="submit" className="btn btn-success">
-              Continue with Google
+            <button type="submit" className="btn btn-dark">
+              Continue with Google <FcGoogle />
             </button>
           </div>
         </form>
