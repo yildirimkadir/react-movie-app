@@ -87,9 +87,6 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="mb-3">
-            <Link to="/register">Forgot Password ? </Link>
-          </div>
           <div>
             <button type="submit" className="btn btn-primary me-2">
               Register

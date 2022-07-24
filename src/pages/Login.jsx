@@ -2,14 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import { signIn } from "../authent/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    signIn(email, password, navigate);
   };
   return (
     <div className="main-container d-flex justify-content-center">
