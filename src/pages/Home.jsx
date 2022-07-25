@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
+import MovieCard from "../components/MovieCard";
 
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
@@ -31,7 +32,7 @@ const Home = () => {
       <div className="input-group mb-1">
         <div className="w-25 d-flex justify-content-center align-items-center">
           <input
-            type="text"
+            type="search"
             className="form-control in"
             placeholder="Search a movie..."
             aria-label="Recipient's username"
@@ -41,6 +42,15 @@ const Home = () => {
             Search
           </button>
         </div>
+      </div>
+      <div className="d-flex justify-content-center flex-wrap">
+        {loading ? (
+          <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        ) : (
+          info?.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+        )}
       </div>
     </>
   );
