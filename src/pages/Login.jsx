@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-import { signIn } from "../authent/firebase";
+import { signIn, signUpProvider } from "../authent/firebase";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -14,6 +14,11 @@ const Login = () => {
     e.preventDefault();
     signIn(email, password, navigate);
   };
+
+  const handleWithGoogle = () => {
+    signUpProvider(navigate);
+  };
+
   return (
     <div className="main-container d-flex justify-content-center">
       <div className="form-image d-none d-md-block ">
@@ -65,7 +70,11 @@ const Login = () => {
             <button type="submit" className="btn btn-primary me-2">
               Login
             </button>
-            <button type="submit" className="btn btn-dark">
+            <button
+              type="submit"
+              className="btn btn-dark"
+              onClick={handleWithGoogle}
+            >
               Continue with Google <FcGoogle />
             </button>
           </div>

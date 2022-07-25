@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { logOut } from "../authent/firebase";
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
+  // const currentUser = false;
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
             <h3>React Movie App</h3>
@@ -31,7 +33,7 @@ const Navbar = () => {
                     <h6 className="loginName">{currentUser.displayName}</h6>
                   </li>
                   <li className="nav-item">
-                    <Link to="/" className="nav-link">
+                    <Link to="/" className="nav-link" onClick={() => logOut()}>
                       Logout
                     </Link>
                   </li>
