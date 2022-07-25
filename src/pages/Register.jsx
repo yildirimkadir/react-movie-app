@@ -29,8 +29,8 @@ const Register = () => {
           alt="sample-movie"
         />
       </div>
-      <div className="container mt-1 d-flex flex-column justify-content-center align-items-center">
-        <form className="form" onSubmit={handleSubmit}>
+      <div className="container mt-4 d-flex flex-column justify-content-center align-items-center">
+        <form className="form mt-4" onSubmit={handleSubmit}>
           <h1 className="form-title display-4 mb-4 ">Register</h1>
           <div className="mb-3">
             <label htmlFor="firstName" className="form-label">
@@ -88,7 +88,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <button type="submit" className="btn btn-primary me-2">
+            <button type="submit" className="btn btn-primary me-2 w-25">
               Register
             </button>
           </div>
