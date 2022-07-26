@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-import { signIn, signUpProvider } from "../authent/firebase";
+import { forgotPassword, signIn, signUpProvider } from "../authent/firebase";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -64,7 +64,9 @@ const Login = () => {
             />
           </div>
           <div className="mb-3">
-            <Link to="/register">Forgot Password ? </Link>
+            <Link to="#" onClick={() => forgotPassword(email)}>
+              Forgot Password ?{" "}
+            </Link>
           </div>
           <div>
             <button type="submit" className="btn btn-primary me-2 w-25">

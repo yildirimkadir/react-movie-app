@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+import { toastWarnNotify, toastSuccessNotify, toastErrorNotify } from "../helpers/Toastify";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -44,7 +45,7 @@ export const createUser = async(email, password, navigate, displayName) => {
      console.log(userCredential);
         
     } catch (err) {
-        alert("Dies User wurde schon registered")
+        toastWarnNotify("Dies User wurde schon registered")
         
     }
 }
@@ -58,10 +59,10 @@ export const signIn = async (email, password, navigate) => {
       password
     );
     navigate('/');
-    // toastSuccessNotify('Logged in successfully!');
+    toastSuccessNotify('Logged in successfully!');
     console.log(userCredential);
   } catch (err) {
-    // toastErrorNotify(err.message);
+    toastErrorNotify(err.message);
     console.log(err);
   }
 };
@@ -89,7 +90,7 @@ export const signUpProvider = (navigate) => {
     .then((result) => {
       console.log(result);
       navigate('/');
-    //   toastSuccessNotify('Logged out successfully!');
+      toastSuccessNotify('Logged out successfully!');
     })
     .catch((error) => {
       // Handle Errors here.
@@ -98,16 +99,12 @@ export const signUpProvider = (navigate) => {
 };
 
 export const forgotPassword = (email) => {
-  //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
   sendPasswordResetEmail(auth, email)
     .then(() => {
       // Password reset email sent!
-    //   toastWarnNotify('Please check your mail box!');
-      alert("Please check your mail box!");
+      toastWarnNotify('Please check your mail box!');
     })
     .catch((err) => {
-    //   toastErrorNotify(err.message);
-      alert(err.message);
-      // ..
+      toastErrorNotify(err.message);
     });
 };
