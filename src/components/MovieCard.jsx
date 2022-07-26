@@ -26,7 +26,7 @@ const MovieCard = ({ movie }) => {
     <div
       className="movie"
       onClick={() => {
-        navigate("/details/" + id);
+        navigate(`/details/${id}`);
         !currentUser && alert("Please log in to see detail");
       }}
     >
