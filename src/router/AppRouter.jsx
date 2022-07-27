@@ -12,8 +12,8 @@ const AppRouter = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/react-movie-app" index element={<Home />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/react-movie-app" element={<Home />} />
+          <Route path="/" index element={<Home />} />
           <Route path="/details/:id" element={<PrivateRouter />}>
             <Route path="" element={<MovieDatail />} />
           </Route>
