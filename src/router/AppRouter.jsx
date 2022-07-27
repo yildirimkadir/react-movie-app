@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -12,13 +12,14 @@ const AppRouter = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/react-movie-app" element={<Home />} />
-          <Route path="/" index element={<Home />} />
+          {/* <Route path="/react-movie-app" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/details/:id" element={<PrivateRouter />}>
             <Route path="" element={<MovieDatail />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     </>
