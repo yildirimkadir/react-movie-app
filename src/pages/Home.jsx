@@ -46,8 +46,8 @@ const Home = () => {
   return (
     <>
       <div className="input-group mb-1">
-        <div className="w-25 d-flex justify-content-center align-items-center">
-          <form className="d-flex justify-content-center">
+        <div className="w-50 d-flex justify-content-center align-items-center">
+          <form className="d-flex w-auto justify-content-center">
             <input
               type="search"
               className="form-control in"
