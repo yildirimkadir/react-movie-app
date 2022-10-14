@@ -43,6 +43,13 @@ const Home = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+      //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <>
       <div className="input-group mb-1">
@@ -54,6 +61,7 @@ const Home = () => {
               placeholder="Search a movie..."
               aria-label="Movie's name"
               aria-describedby="button-addon2"
+              onKeyDown={handleKeyDown}
               onChange={(e) => setValue(e.target.value)}
             />
             <button

@@ -11,42 +11,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
- * {
-   box-sizing: border-box;
- }
- .main-container {
+* {
+  box-sizing: border-box;
+}
+
+.main-container {
   height: 100vh;
- }
+}
+
 .navbar-nav {
   margin-left: auto;
 }
+
 .loginName {
   color: white;
   /* font-weight: bold; */
   line-height: 40px;
 }
+
 .registerImg {
   height: 100%;
   width: 100%;
 }
+
 .form-image {
   min-width: 800px;
   min-height: 800px;
 }
+
 .form {
   width: 500px;
 }
+
 .input-group {
   padding: 10px;
   background-color: lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 .movie {
-  background-color:crimson;
+  background-color: crimson;
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -97,4 +104,10 @@ code {
 .tag.red {
   background-color: #7f0000;
 }
-  
+
+.link {
+  color: #0b5ed7;
+  text-decoration: underline;
+  margin-left: 0.1rem;
+  cursor: pointer;
+}
